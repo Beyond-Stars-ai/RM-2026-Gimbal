@@ -33,3 +33,8 @@ can\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 can\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 can\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 can\stm32f4xx_it.o: ../Inc/stm32f4xx_it.h
+can\stm32f4xx_it.o: ..\A-Hardware\Gimbal_Yaw_Small.h
+can\stm32f4xx_it.o: ..\A-Calculate\PID.h
+can\stm32f4xx_it.o: ../application/CAN_receive.h
+can\stm32f4xx_it.o: ../application/remote_control.h
+can\stm32f4xx_it.o: ../bsp/boards/bsp_rc.h

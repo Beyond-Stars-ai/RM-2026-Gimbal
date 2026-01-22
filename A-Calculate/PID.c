@@ -1,4 +1,5 @@
 #include "PID.h"
+#define Motor_ECD_MAX 8192.0f
 
 /*
  *函数简介:位置式PID初始化结构体
@@ -65,6 +66,11 @@ void PID_PositionSetOUTRange(PID_PositionInitTypedef* PID_InitStructure,float OU
 	PID_InitStructure->OUT_Max=OUT_Max;
 }
 
+void PID_PositionSetNeedValue(PID_PositionInitTypedef* PID_InitStructure,float NeedValue)
+{
+	PID_InitStructure->Need_Value=NeedValue;
+}
+
 /*
  *函数简介:位置式PID清理
  *参数说明:位置式PID参数结构体
@@ -88,8 +94,16 @@ void PID_PositionClean(PID_PositionInitTypedef* PID_InitStructure)
 void PID_PositionCalc(PID_PositionInitTypedef* PID_InitStructure,float NowValue)
 {
 	PID_InitStructure->Now_Value = NowValue;
+
+  float err = PID_InitStructure->Need_Value - PID_InitStructure->Now_Value;
+  if (err > Motor_ECD_MAX/2) {          // 8192 / 2 = 4096
+      err -= Motor_ECD_MAX;
+  } else if (err < -Motor_ECD_MAX/2) {
+      err += Motor_ECD_MAX;
+  }
+
 	PID_InitStructure->Ek_Last = PID_InitStructure->Ek;
-	PID_InitStructure->Ek = PID_InitStructure->Need_Value - PID_InitStructure->Now_Value;
+	PID_InitStructure->Ek = err;
 
 	if(PID_InitStructure->Ek_Min < PID_InitStructure->Ek && PID_InitStructure->Ek < PID_InitStructure->Ek_Max)//误差为0检测
 	{

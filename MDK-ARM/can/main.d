@@ -42,3 +42,4 @@ can\main.o: ../application/CAN_receive.h
 can\main.o: D:\keil5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 can\main.o: ../application/remote_control.h
 can\main.o: ../bsp/boards/bsp_rc.h
+can\main.o: ..\A-Calculate\PID.h

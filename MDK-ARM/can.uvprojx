@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx,USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../application;../bsp/boards</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../application;../bsp/boards;..\A-Calculate;..\A-Hardware</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1721,6 +1721,26 @@
               <FileName>Remote.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\A-Hardware\Remote.h</FilePath>
+            </File>
+            <File>
+              <FileName>Gimbal_Yaw_Small.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\A-Hardware\Gimbal_Yaw_Small.c</FilePath>
+            </File>
+            <File>
+              <FileName>Gimbal_Yaw_Small.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\A-Hardware\Gimbal_Yaw_Small.h</FilePath>
+            </File>
+            <File>
+              <FileName>Gimbal_Pitch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\A-Hardware\Gimbal_Pitch.c</FilePath>
+            </File>
+            <File>
+              <FileName>Gimbal_Pitch.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\A-Hardware\Gimbal_Pitch.h</FilePath>
             </File>
           </Files>
         </Group>

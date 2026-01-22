@@ -53,6 +53,7 @@ void PID_PositionStructureInit	(PID_PositionInitTypedef* PID_InitStructure,float
 void PID_PositionSetParameter		(PID_PositionInitTypedef* PID_InitStructure,float kp,float ki,float kd);	//位置式PID设置参数
 void PID_PositionSetEkRange			(PID_PositionInitTypedef* PID_InitStructure,float ek_low,float ek_up);		//位置式PID设置误差为0阈值
 void PID_PositionSetOUTRange		(PID_PositionInitTypedef* PID_InitStructure,float out_low,float out_up);	//位置式PID设置输出限幅
+void PID_PositionSetNeedValue		(PID_PositionInitTypedef* PID_InitStructure,float NeedValue);
 void PID_PositionClean					(PID_PositionInitTypedef* PID_InitStructure);										//位置式PID清理
 void PID_PositionCalc						(PID_PositionInitTypedef* PID_InitStructure,float NowValue);						//位置式PID计算
 

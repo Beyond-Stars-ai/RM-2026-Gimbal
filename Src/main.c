@@ -32,6 +32,7 @@
 #include <string.h>
 #include <stdint.h> 
 #include "remote_control.h"
+#include "PID.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,7 +57,9 @@
 
 	extern uint8_t rx_data[8];//can_receive.c
   extern motor_measure_t motor_chassis[7];
-	
+	extern PID_PositionInitTypedef TEST_SmallYaw_PID;
+  extern RC_ctrl_t *local_rc_ctrl;		
+
 	uint16_t RC_Rx_Len = 0;
 	uint8_t  RC_Rx_Flag = 0;
 	uint8_t rx_byte;
@@ -71,7 +74,6 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-const RC_ctrl_t *local_rc_ctrl;
 /* USER CODE END 0 */
 
 /**
@@ -113,30 +115,39 @@ int main(void)
 	HAL_TIM_Base_Start_IT(&htim6);
   can_filter_init();
 	
-  remote_control_init();
-  usart1_tx_dma_init();
-  local_rc_ctrl = get_remote_control_point();
+  Remote_Init();
+  Gimbal_Yaw_Small_Init();
 	
+  extern PID_PositionInitTypedef TEST_SmallYaw_PositionPID;
+  extern PID_PositionInitTypedef TEST_SmallYaw_SpeedPID;
+  extern float target_speed;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		UART2_SendNumber(local_rc_ctrl->rc.ch[0]+1024,4);
+		UART2_SendNumber(local_rc_ctrl->rc.ch[0]+1024,4);//右摇杆左右
 		UART2_SendByte(',');
-		UART2_SendNumber(local_rc_ctrl->rc.ch[1]+1024,4);
+		UART2_SendNumber(local_rc_ctrl->rc.ch[1]+1024,4);//右摇杆上下
 		UART2_SendByte(',');
-		UART2_SendNumber(local_rc_ctrl->rc.ch[2]+1024,4);
+//		UART2_SendNumber(local_rc_ctrl->rc.ch[2]+1024,4);//左摇杆左右
+//		UART2_SendByte(',');
+//		UART2_SendNumber(local_rc_ctrl->rc.ch[3]+1024,4);//左摇杆上下
+//		UART2_SendByte(',');
+//		UART2_SendNumber(local_rc_ctrl->rc.ch[4]+1024,4);
+//		UART2_SendByte(',');
+//		UART2_SendNumber(local_rc_ctrl->rc.s[0],4);
+//		UART2_SendByte(',');
+//		UART2_SendNumber(local_rc_ctrl->rc.s[1],4);
+//		UART2_SendByte(',');
+
+
+		UART2_SendNumber((uint32_t)TEST_SmallYaw_SpeedPID.Need_Value,6);
 		UART2_SendByte(',');
-		UART2_SendNumber(local_rc_ctrl->rc.ch[3]+1024,4);
-		UART2_SendByte(',');
-		UART2_SendNumber(local_rc_ctrl->rc.ch[4]+1024,4);
-		UART2_SendByte(',');
-		UART2_SendNumber(local_rc_ctrl->rc.s[0],4);
-		UART2_SendByte(',');
-		UART2_SendNumber(local_rc_ctrl->rc.s[1],4);
-		UART2_SendByte(',');
+		UART2_SendNumber(motor_chassis[5].speed_rpm,6);
+
+
 		UART2_SendByte('\n');
 		HAL_Delay(100);
 		
