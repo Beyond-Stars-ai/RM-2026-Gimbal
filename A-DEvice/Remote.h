@@ -1,6 +1,7 @@
 #ifndef REMOTE_CONTROL_H
 #define REMOTE_CONTROL_H
 #include <stdint.h> 
+#include "bsp_usart.h"
 
 #define SBUS_RX_BUF_NUM 36u
 
@@ -59,7 +60,8 @@ typedef __packed struct
 
 /* ----------------------- Internal Data ----------------------------------- */
 
-void remote_control_init(void);
-extern const RC_ctrl_t *get_remote_control_point(void);
+extern const RC_ctrl_t *remote_GetControlPoint(void);
+void Remote_Init(void);//遥控器初始化
+void Remote_UART_IDLE_Callback(void);
 
 #endif

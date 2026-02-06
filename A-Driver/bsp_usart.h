@@ -1,9 +1,12 @@
 #ifndef BSP_USART_H
 #define BSP_USART_H
 #include <stdint.h> 
+#include "usart.h"
+#include "main.h"
 extern void usart1_tx_dma_init(void);
 extern void usart1_tx_dma_enable(uint8_t *data, uint16_t len);
-
+extern UART_HandleTypeDef huart3;
+extern DMA_HandleTypeDef hdma_usart3_rx;
 //extern uint8_t UART1_RxData;
 //extern uint8_t UART1_RxFlag;
 //extern uint8_t UART2_RxData;
@@ -26,5 +29,9 @@ void UART2_SendNumber(uint32_t Number,uint8_t Length);
 //void UART2_Printf(char *format,...);
 uint32_t USART_Pow(uint32_t X, uint32_t Y);
 //uint8_t UART2_GetRxFlag(void);
+
+void Dbus_Dma_Init(uint8_t *rx1_buf, uint8_t *rx2_buf, uint16_t dma_buf_num);
+
+
 
 #endif

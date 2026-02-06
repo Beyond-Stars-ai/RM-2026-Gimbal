@@ -5,15 +5,15 @@
 
 PID_PositionInitTypedef Pitch_PositionPID;
 PID_PositionInitTypedef Pitch_SpeedPID;
-extern motor_measure_t motor_chassis[7];
+extern motor_measure_t Can1_Rx_Data[7];
 extern RC_ctrl_t *local_rc_ctrl;
 
 
 
 void Gimbal_Pitch_Init(void)
 {
-	PID_PositionStructureInit (&Pitch_PositionPID,2424);        //外环位置环
-  PID_PositionSetParameter  (&Pitch_PositionPID,1,0,0);
+	PID_PositionStructureInit (&Pitch_PositionPID,4074);        //外环位置环
+  PID_PositionSetParameter  (&Pitch_PositionPID,0.5,0,0);
   PID_PositionSetOUTRange   (&Pitch_PositionPID,-400,400);
   // PID_PositionSetNeedValueRange(&Pitch_PositionPID,4848,0);
 
@@ -63,40 +63,26 @@ void Gimbal_Pitch_Control(void)
 
 
 
-    #define RC_DEADBAND 10
-    int16_t ch0 = local_rc_ctrl->rc.ch[1];
 
-    // ============ 1. 更新位置目标（仅打杆时）============
-    if (ch0 > RC_DEADBAND || ch0 < -RC_DEADBAND) {
-        Pitch_PositionPID.Need_Value -= 0.025f * ch0;
+    // ============更新位置目标（仅打杆时）============
+        Pitch_PositionPID.Need_Value -= 0.025f * local_rc_ctrl->rc.ch[3];
 
         // 限幅 [0, 4848]
-        if (Pitch_PositionPID.Need_Value > 4848.0f)
-            Pitch_PositionPID.Need_Value = 4848.0f;
-        else if (Pitch_PositionPID.Need_Value < 0.0f)
-            Pitch_PositionPID.Need_Value = 0.0f;
-    }
-    // ===================================================
+        if (Pitch_PositionPID.Need_Value > 4500.0f)
+            Pitch_PositionPID.Need_Value = 4500.0f;
+        else if (Pitch_PositionPID.Need_Value < 3300.0f)
+            Pitch_PositionPID.Need_Value = 3300.0f;
 
-    // ============ 2. 位置环计算 =========================
-    PID_PositionCalc(&Pitch_PositionPID, motor_chassis[5].ecd);
-    // ===================================================
+    // ============位置环计算=========================
+    PID_PositionCalc(&Pitch_PositionPID, Can1_Rx_Data[5].ecd);
 
-    // ============ 3. 关键修复：死区内强制速度目标为 0 =====
-    float target_speed = 0.0f;
-    if (ch0 > RC_DEADBAND || ch0 < -RC_DEADBAND) {
-        target_speed = Pitch_PositionPID.OUT; // 打杆时用位置环输出
-    }
-    // 松手时 target_speed = 0 → 速度环无指令 → 电机静音
-    // ===================================================
 
-    // ============ 4. 速度环计算 =========================
-    PID_PositionSetNeedValue(&Pitch_SpeedPID, target_speed);
-    PID_PositionCalc(&Pitch_SpeedPID, motor_chassis[5].speed_rpm);
-    // ===================================================
+    // ============速度环计算=========================
+    PID_PositionSetNeedValue(&Pitch_SpeedPID, Pitch_PositionPID.OUT);
+    PID_PositionCalc(&Pitch_SpeedPID, Can1_Rx_Data[5].speed_rpm);
 
-    // ============ 5. 发送输出 ===========================
-    CAN_cmd_gimbal(0, (int16_t)Pitch_SpeedPID.OUT, 0, 0);
+    // ============发送输出===========================
+    Motor_6020_Voltage1(0, (int16_t)Pitch_SpeedPID.OUT, 0, 0, &hcan1);
 }
 
 

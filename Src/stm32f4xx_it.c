@@ -24,6 +24,11 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Gimbal_Yaw_Small.h"
+#include "Gimbal_Trigger.h"
+#include "Gimbal_Shoot.h"
+#include "Gimbal_Pitch.h"
+#include "iwdg.h"
+#include "Remote.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,6 +63,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern CAN_HandleTypeDef hcan1;
+extern CAN_HandleTypeDef hcan2;
 extern TIM_HandleTypeDef htim6;
 extern DMA_HandleTypeDef hdma_usart1_tx;
 extern DMA_HandleTypeDef hdma_usart3_rx;
@@ -259,34 +265,68 @@ void USART1_IRQHandler(void)
   /* USER CODE END USART1_IRQn 1 */
 }
 
-///**
-//  * @brief This function handles USART3 global interrupt.
-//  */
-//void USART3_IRQHandler(void)
-//{
-//  /* USER CODE BEGIN USART3_IRQn 0 */
-////	
-//  /* USER CODE END USART3_IRQn 0 */
-//  HAL_UART_IRQHandler(&huart3);
-//  /* USER CODE BEGIN USART3_IRQn 1 */
-////  
-//  /* USER CODE END USART3_IRQn 1 */
-//}
+/**
+  * @brief This function handles USART3 global interrupt.
+  */
+void USART3_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_IRQn 0 */
+	//中断接收遥控器数据
+  if (__HAL_UART_GET_FLAG(&huart3, UART_FLAG_IDLE))
+  {
+      Remote_UART_IDLE_Callback();
+  }
+	HAL_IWDG_Refresh(&hiwdg);
+  /* USER CODE END USART3_IRQn 0 */
+  HAL_UART_IRQHandler(&huart3);
+  /* USER CODE BEGIN USART3_IRQn 1 */
+
+  /* USER CODE END USART3_IRQn 1 */
+}
 
 /**
   * @brief This function handles TIM6 global interrupt, DAC1 and DAC2 underrun error interrupts.
   */
 void TIM6_DAC_IRQHandler(void)
 {
-	
   /* USER CODE BEGIN TIM6_DAC_IRQn 0 */
 	Gimbal_Trigger_Control();
-	Gimbal_Yaw_Small_Control();
+//	Gimbal_Yaw_Small_Control();
+	Gimbal_Shoot_Control();
+//	Gimbal_Pitch_Control();
   /* USER CODE END TIM6_DAC_IRQn 0 */
   HAL_TIM_IRQHandler(&htim6);
   /* USER CODE BEGIN TIM6_DAC_IRQn 1 */
 
   /* USER CODE END TIM6_DAC_IRQn 1 */
+}
+
+/**
+  * @brief This function handles CAN2 RX0 interrupts.
+  */
+void CAN2_RX0_IRQHandler(void)
+{
+  /* USER CODE BEGIN CAN2_RX0_IRQn 0 */
+
+  /* USER CODE END CAN2_RX0_IRQn 0 */
+  HAL_CAN_IRQHandler(&hcan2);
+  /* USER CODE BEGIN CAN2_RX0_IRQn 1 */
+
+  /* USER CODE END CAN2_RX0_IRQn 1 */
+}
+
+/**
+  * @brief This function handles CAN2 RX1 interrupt.
+  */
+void CAN2_RX1_IRQHandler(void)
+{
+  /* USER CODE BEGIN CAN2_RX1_IRQn 0 */
+
+  /* USER CODE END CAN2_RX1_IRQn 0 */
+  HAL_CAN_IRQHandler(&hcan2);
+  /* USER CODE BEGIN CAN2_RX1_IRQn 1 */
+
+  /* USER CODE END CAN2_RX1_IRQn 1 */
 }
 
 /**

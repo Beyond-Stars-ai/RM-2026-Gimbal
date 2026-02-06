@@ -2,10 +2,11 @@
 #define	GIMBAL_SHOOT_H
 
 #include "PID.h"
-#include "CAN_receive.h"
-#include "remote_control.h"
+#include "Motor.h"
+#include "Remote.h"
+#include "BSP_CAN.h"
 
-void Gimbal_Shoot_Init();
-void Gimbal_Shoot_Control();
+void Gimbal_Shoot_Init(void);
+void Gimbal_Shoot_Control(void);
 
 #endif //GIMBAL_SHOOT_H

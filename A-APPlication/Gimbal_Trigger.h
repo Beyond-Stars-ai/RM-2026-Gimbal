@@ -2,10 +2,11 @@
 #define GIMBAL_TRIGGER_H
 
 #include "PID.h"
-#include "CAN_receive.h"
-#include "remote_control.h"
+#include "Motor.h"
+#include "Remote.h"
+#include "BSP_CAN.h"
 
-void Gimbal_Trigger_Init();
-void Gimbal_Trigger_Control();
+void Gimbal_Trigger_Init(void);
+void Gimbal_Trigger_Control(void);
 
 #endif //GIMBAL_TRIGGER_H

@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx,USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;..\A-APPlication;..\A-DEvice;..\A-Driver</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../A-APPlication;../A-DEvice;../A-Driver</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -414,6 +414,62 @@
               <FileName>dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/dma.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>1</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+            <File>
+              <FileName>iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Src/iwdg.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -1457,6 +1513,62 @@
               </FileOption>
             </File>
             <File>
+              <FileName>stm32f4xx_hal_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>1</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+            <File>
               <FileName>stm32f4xx_hal_tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c</FilePath>
@@ -1660,16 +1772,6 @@
               <FilePath>..\A-APPlication\PID.h</FilePath>
             </File>
             <File>
-              <FileName>Remote.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\A-APPlication\Remote.c</FilePath>
-            </File>
-            <File>
-              <FileName>Remote.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\A-APPlication\Remote.h</FilePath>
-            </File>
-            <File>
               <FileName>Gimbal_Shoot.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\A-APPlication\Gimbal_Shoot.c</FilePath>
@@ -1689,30 +1791,121 @@
               <FileType>5</FileType>
               <FilePath>..\A-APPlication\Gimbal_Trigger.h</FilePath>
             </File>
+            <File>
+              <FileName>Gimbal_to_Chassis.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\A-APPlication\Gimbal_to_Chassis.c</FilePath>
+            </File>
+            <File>
+              <FileName>Gimbal_to_Chassis.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\A-APPlication\Gimbal_to_Chassis.h</FilePath>
+            </File>
+            <File>
+              <FileName>Gimbal_Yaw_Big.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\A-APPlication\Gimbal_Yaw_Big.c</FilePath>
+            </File>
+            <File>
+              <FileName>Gimbal_Yaw_Big.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\A-APPlication\Gimbal_Yaw_Big.h</FilePath>
+            </File>
+            <File>
+              <FileName>Gimbal_CtoC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\A-APPlication\Gimbal_CtoC.c</FilePath>
+            </File>
+            <File>
+              <FileName>Gimbal_CtoC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\A-APPlication\Gimbal_CtoC.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>A-DEvice</GroupName>
           <Files>
             <File>
-              <FileName>CAN_receive.c</FileName>
+              <FileName>Motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\A-DEvice\CAN_receive.c</FilePath>
+              <FilePath>..\A-DEvice\Motor.c</FilePath>
             </File>
             <File>
-              <FileName>CAN_receive.h</FileName>
+              <FileName>Motor.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\A-DEvice\CAN_receive.h</FilePath>
+              <FilePath>..\A-DEvice\Motor.h</FilePath>
             </File>
             <File>
-              <FileName>remote_control.c</FileName>
+              <FileName>Remote.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\A-DEvice\remote_control.c</FilePath>
+              <FilePath>..\A-DEvice\Remote.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>1</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
             </File>
             <File>
-              <FileName>remote_control.h</FileName>
+              <FileName>Remote.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\A-DEvice\remote_control.h</FilePath>
+              <FilePath>..\A-DEvice\Remote.h</FilePath>
+            </File>
+            <File>
+              <FileName>CtoC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\A-DEvice\CtoC.c</FilePath>
+            </File>
+            <File>
+              <FileName>CtoC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\A-DEvice\CtoC.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1728,16 +1921,6 @@
               <FileName>bsp_can.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\A-Driver\bsp_can.h</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\A-Driver\bsp_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_dma.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\A-Driver\bsp_dma.h</FilePath>
             </File>
             <File>
               <FileName>bsp_usart.c</FileName>
