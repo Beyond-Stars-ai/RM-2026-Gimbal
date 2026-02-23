@@ -84,13 +84,22 @@ extern PID_PositionInitTypedef SmallYaw_PositionPID;
 extern PID_PositionInitTypedef SmallYaw_GyroscopePID;
 extern PID_PositionInitTypedef ShootLeft_SpeedPID;
 extern PID_PositionInitTypedef ShootRight_SpeedPID;
+extern M3508_Motor Can1_M3508_MotorStatus[8];//M3508电机状态数组
+extern M3508_Motor Can2_M3508_MotorStatus[8];//M3508电机状态数组
+extern M6020_Motor Can1_M6020_MotorStatus[7];//GM6020电机状态数组
+extern M6020_Motor Can2_M6020_MotorStatus[7];//GM6020电机状态数组
+extern M2006_Motor Can1_M2006_MotorStatus[8];//M2006电机状态数组
+extern M2006_Motor Can2_M2006_MotorStatus[8];//M2006电机状态数组
 extern RC_ctrl_t *local_rc_ctrl;		
 extern BMI088_Init_typedef BMI088_Data;
 extern BMI088_Init_typedef Can_BMI088_Data;
 extern BMI088_Init_typedef BigYaw_BMI088_Data;		//大yaw轴解算的陀螺仪数据
 extern BMI088_Init_typedef SmallYaw_BMI088_Data;	//小yaw轴解算的陀螺仪数据
 
-uint8_t rx_byte;
+
+extern float gyro_needvalue ;//用户目标角度
+
+uint8_t rx_byte;//串口中断回调函数缓冲区
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -187,6 +196,8 @@ int main(void)
 //    Gimbal_Warning_Music();
 
 		Gimbal_PoseCalc();
+		
+		
 		// ============磁力计和陀螺仪数据============
 //		UART2_SendByte(',');
 		UART2_SendFloat_Sign(Can_BMI088_Data.Yaw,4);
@@ -195,6 +206,14 @@ int main(void)
 		UART2_SendByte(',');
 		UART2_SendFloat_Sign(SmallYaw_BMI088_Data.Yaw,4);
 		UART2_SendByte(',');
+		
+		
+		UART2_SendFloat_Sign(gyro_needvalue,4);//用户目标角度
+		UART2_SendByte(',');
+		UART2_SendFloat_Sign(SmallYaw_BMI088_Data.Yaw,4);//实际角度
+		UART2_SendByte(',');
+		UART2_SendFloat_Sign(SmallYaw_GyroscopePID.Need_Value,4);//电机目标角度
+//		UART2_SendByte(',');
 		// ============遥控器数据============
 		{
 //		UART2_SendNumber(local_rc_ctrl->rc.ch[0]+1024,4);//右摇杆左右
@@ -223,13 +242,13 @@ int main(void)
 //		UART2_SendByte(',');
 //		UART2_SendNumber(BigYaw_PositionPID.Now_Value,4);
 //		UART2_SendByte(',');
-		UART2_SendFloat_Sign(SmallYaw_SpeedPID.Need_Value,4);//小waw
-		UART2_SendByte(',');
-		UART2_SendFloat_Sign(SmallYaw_SpeedPID.Now_Value,4);
-		UART2_SendByte(',');
-		UART2_SendFloat_Sign(SmallYaw_GyroscopePID.Need_Value,4);
-		UART2_SendByte(',');
-		UART2_SendFloat_Sign(SmallYaw_GyroscopePID.Now_Value,4);
+//		UART2_SendFloat_Sign(SmallYaw_SpeedPID.Need_Value,4);//小waw
+//		UART2_SendByte(',');
+//		UART2_SendFloat_Sign(SmallYaw_SpeedPID.Now_Value,4);
+//		UART2_SendByte(',');
+//		UART2_SendFloat_Sign(SmallYaw_GyroscopePID.Need_Value,4);
+//		UART2_SendByte(',');
+//		UART2_SendFloat_Sign(SmallYaw_GyroscopePID.Now_Value,4);
 //		UART2_SendByte(',');
 //		UART2_SendNumber(ShootRight_SpeedPID.Need_Value,4);//发射机构
 //		UART2_SendByte(',');
@@ -243,12 +262,6 @@ int main(void)
 //		UART2_SendByte(',');
 		}
 
-extern M3508_Motor Can1_M3508_MotorStatus[8];//M3508电机状态数组
-extern M3508_Motor Can2_M3508_MotorStatus[8];//M3508电机状态数组
-extern M6020_Motor Can1_M6020_MotorStatus[7];//GM6020电机状态数组
-extern M6020_Motor Can2_M6020_MotorStatus[7];//GM6020电机状态数组
-extern M2006_Motor Can1_M2006_MotorStatus[8];//M2006电机状态数组
-extern M2006_Motor Can2_M2006_MotorStatus[8];//M2006电机状态数组
 
 
 		UART2_SendByte('\n');

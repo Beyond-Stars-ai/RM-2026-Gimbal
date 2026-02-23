@@ -16,8 +16,8 @@ extern CAN_HandleTypeDef hcan2;
 
 void Gimbal_YawBig_Init(void)
 {
-	PID_PositionStructureInit (&BigYaw_PositionPID,3944);        //外环电机位置环
-  PID_PositionSetParameter  (&BigYaw_PositionPID,0.5,0,8);
+	PID_PositionStructureInit (&BigYaw_PositionPID,2432);        //外环小yaw电机位置环
+  PID_PositionSetParameter  (&BigYaw_PositionPID,0.5,0,0);
 	PID_PositionSetEkRange		(&BigYaw_PositionPID,-50,50);		//位置式PID设置误差为0阈值
   PID_PositionSetOUTRange   (&BigYaw_PositionPID,-20000,20000);
   // PID_PositionSetNeedValueRange(&BigYaw_PositionPID,4848,0);
@@ -33,18 +33,9 @@ void Gimbal_YawBig_Control(void)
 //	
 //		(Can2_M6020_MotorStatus[0].ANgle - 104) = BigYaw_BMI088_Data.Yaw
 		
-    // ============ 1. 更新位置目标（仅打杆时）============
-		BigYaw_PositionPID.Need_Value -= 0.012f * (Can2_M6020_MotorStatus[1].Position-2432);
-//    BigYaw_PositionPID.Need_Value -= 0.025f * local_rc_ctrl->rc.ch[4];
-
-			if (BigYaw_PositionPID.Need_Value > 8191.0f)
-					BigYaw_PositionPID.Need_Value -= 8192.0f;
-			else if (BigYaw_PositionPID.Need_Value < 0.0f)
-					BigYaw_PositionPID.Need_Value += 8192.0f;
-			
-
+    // ============ 1. 更新位置目标============
     // ============ 2. 位置环计算 =========================
-		PID_PositionCalc_Encoder(&BigYaw_PositionPID, Can2_M6020_MotorStatus[0].Angle);
+		PID_PositionCalc_Encoder(&BigYaw_PositionPID, Can2_M6020_MotorStatus[1].Angle);
     // ===================================================
 
     // ============ 3. 速度环计算 =========================
