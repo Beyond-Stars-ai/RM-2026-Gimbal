@@ -156,11 +156,12 @@ targets:
             C_FLAGS: --diag_suppress=1 --diag_suppress=1295
             c99-mode: true
             one-elf-section-per-function: true
-            optimization: level-0
+            optimization: level-3
             warnings: all-warnings
           global:
             output-debug-info: enable
           linker:
+            $disableOutputTask: true
             $outputTaskExcludes:
               - .bin
             output-format: elf
@@ -251,6 +252,16 @@ targets:
         otherCmds: ""
         proType: 1
         speed: 8000
+      STLink:
+        address: "0x8000000"
+        bin: ""
+        elFile: None
+        optionBytes: .eide/can.st.option.bytes.ini
+        otherCmds: ""
+        proType: SWD
+        resetMode: default
+        runAfterProgram: true
+        speed: 4000
       probe-rs:
         allowEraseAll: false
         baseAddr: "0x08000000"
@@ -259,4 +270,4 @@ targets:
         protocol: swd
         speed: 0
         target: STM32F407IG
-    uploader: probe-rs
+    uploader: STLink

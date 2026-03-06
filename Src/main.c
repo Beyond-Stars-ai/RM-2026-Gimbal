@@ -202,9 +202,9 @@ int main(void)
 //		UART2_SendByte(',');
 		// UART2_SendFloat_Sign(Can_BMI088_Data.Yaw,4);
 		// UART2_SendByte(',');
-		UART2_SendFloat_Sign(BigYaw_BMI088_Data.Yaw,4);
-		UART2_SendByte(',');
-		UART2_SendFloat_Sign(SmallYaw_BMI088_Data.Yaw,4);
+		// UART2_SendFloat_Sign(BigYaw_BMI088_Data.Yaw,4);
+		// UART2_SendByte(',');
+		// UART2_SendFloat_Sign(SmallYaw_BMI088_Data.Yaw,4);
 		// UART2_SendByte(',');
 		
 		
@@ -241,10 +241,10 @@ int main(void)
 //		UART2_SendNumber(BigYaw_PositionPID.Need_Value,4);
 //		UART2_SendByte(',');
 //		UART2_SendNumber(BigYaw_PositionPID.Now_Value,4);
-//		UART2_SendByte(',');
-//		UART2_SendFloat_Sign(SmallYaw_SpeedPID.Need_Value,4);//小waw
-//		UART2_SendByte(',');
-//		UART2_SendFloat_Sign(SmallYaw_SpeedPID.Now_Value,4);
+		// UART2_SendByte(',');
+		UART2_SendFloat_Sign(SmallYaw_SpeedPID.Need_Value,4);
+		UART2_SendByte(',');
+		UART2_SendFloat_Sign(SmallYaw_SpeedPID.Now_Value,4);
 //		UART2_SendByte(',');
 //		UART2_SendFloat_Sign(SmallYaw_GyroscopePID.Need_Value,4);
 //		UART2_SendByte(',');
