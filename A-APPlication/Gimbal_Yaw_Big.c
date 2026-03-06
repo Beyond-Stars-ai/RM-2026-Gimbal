@@ -1,4 +1,5 @@
 #include "Gimbal_Yaw_Big.h"
+#include "task.h"
 
 PID_PositionInitTypedef BigYaw_PositionPID;
 PID_PositionInitTypedef BigYaw_SpeedPID;
@@ -30,7 +31,8 @@ void Gimbal_YawBig_Init(void)
 	//====新加的
 	// 开机防摔：等待CAN数据更新后，将目标设为当前实际编码器位置
 	// 注意：需要延时一小段时间确保CAN数据已接收
-	HAL_Delay(100);  // 等待100ms确保电机数据已更新
+	// HAL_Delay(100);  // 等待100ms确保电机数据已更新
+  PROCESSOR(100);
 	PID_PositionSetNeedValue(&BigYaw_PositionPID, Can2_M6020_MotorStatus[0].Angle);
 	//====
 }
