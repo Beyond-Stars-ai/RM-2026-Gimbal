@@ -1,0 +1,262 @@
+version: "4.1"
+name: can
+type: ARM
+deviceName: null
+packDir: null
+srcDirs: []
+virtualFolder:
+  name: <virtual_root>
+  files: []
+  folders:
+    - name: Application
+      files: []
+      folders:
+        - name: MDK-ARM
+          files:
+            - path: startup_stm32f407xx.s
+          folders: []
+        - name: User
+          files:
+            - path: ../Src/main.c
+            - path: ../Src/gpio.c
+            - path: ../Src/can.c
+            - path: ../Src/dma.c
+            - path: ../Src/i2c.c
+            - path: ../Src/iwdg.c
+            - path: ../Src/spi.c
+            - path: ../Src/tim.c
+            - path: ../Src/usart.c
+            - path: ../Src/stm32f4xx_it.c
+            - path: ../Src/stm32f4xx_hal_msp.c
+          folders: []
+    - name: Drivers
+      files: []
+      folders:
+        - name: CMSIS
+          files:
+            - path: ../Src/system_stm32f4xx.c
+          folders: []
+        - name: STM32F4xx_HAL_Driver
+          files:
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c
+            - path: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
+          folders: []
+    - name: A-APPlication
+      files:
+        - path: ../A-APPlication/Gimbal_Pitch.h
+        - path: ../A-APPlication/Gimbal_Pitch.c
+        - path: ../A-APPlication/Gimbal_Yaw_Small.c
+        - path: ../A-APPlication/Gimbal_Yaw_Small.h
+        - path: ../A-APPlication/PID.c
+        - path: ../A-APPlication/PID.h
+        - path: ../A-APPlication/Gimbal_Shoot.c
+        - path: ../A-APPlication/Gimbal_Shoot.h
+        - path: ../A-APPlication/Gimbal_Trigger.c
+        - path: ../A-APPlication/Gimbal_Trigger.h
+        - path: ../A-APPlication/Gimbal_Yaw_Big.c
+        - path: ../A-APPlication/Gimbal_Yaw_Big.h
+        - path: ../A-APPlication/Gimbal_CtoC.c
+        - path: ../A-APPlication/Gimbal_CtoC.h
+        - path: ../A-APPlication/ist8310driver.c
+        - path: ../A-APPlication/ist8310driver.h
+        - path: ../A-APPlication/ist8310driver_middleware.c
+        - path: ../A-APPlication/ist8310driver_middleware.h
+        - path: ../A-APPlication/Gimbal_PoseCalc.c
+        - path: ../A-APPlication/Gimbal_PoseCalc.h
+        - path: ../A-APPlication/Gimbal_Warning.c
+        - path: ../A-APPlication/Gimbal_Warning.h
+      folders: []
+    - name: A-DEvice
+      files:
+        - path: ../A-DEvice/Motor.c
+        - path: ../A-DEvice/Motor.h
+        - path: ../A-DEvice/Remote.c
+        - path: ../A-DEvice/Remote.h
+        - path: ../A-DEvice/BMI088.c
+        - path: ../A-DEvice/BMI088.h
+        - path: ../A-DEvice/LED.c
+        - path: ../A-DEvice/LED.h
+        - path: ../A-DEvice/Buzzer.c
+        - path: ../A-DEvice/Buzzer.h
+      folders: []
+    - name: A-Driver
+      files:
+        - path: ../A-Driver/bsp_can.c
+        - path: ../A-Driver/bsp_can.h
+        - path: ../A-Driver/bsp_usart.c
+        - path: ../A-Driver/bsp_usart.h
+        - path: ../A-Driver/BMI088driver.c
+        - path: ../A-Driver/BMI088driver.h
+        - path: ../A-Driver/BMI088Middleware.c
+        - path: ../A-Driver/BMI088Middleware.h
+        - path: ../A-Driver/BMI088reg.h
+        - path: ../A-Driver/Parameter.h
+        - path: ../A-Driver/task.h
+      folders: []
+    - name: ::CMSIS
+      files: []
+      folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: fec81aebda08e3da527031a1df7808a5
+targets:
+  can:
+    cppPreprocessAttrs:
+      defineList:
+        - USE_HAL_DRIVER
+        - STM32F407xx
+        - USE_HAL_DRIVER
+        - STM32F407xx
+      incList:
+        - ../Inc
+        - ../Drivers/STM32F4xx_HAL_Driver/Inc
+        - ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
+        - ../Drivers/CMSIS/Device/ST/STM32F4xx/Include
+        - ../Drivers/CMSIS/Include
+        - ../A-APPlication
+        - ../A-DEvice
+        - ../A-Driver
+        - .cmsis/include
+        - RTE/_can
+      libList: []
+    excludeList: []
+    toolchain: AC5
+    toolchainConfigMap:
+      AC5:
+        archExtensions: ""
+        cpuType: Cortex-M4
+        floatingPointHardware: single
+        options:
+          version: 4
+          afterBuildTasks: []
+          asm-compiler: {}
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            CXX_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            C_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            c99-mode: true
+            one-elf-section-per-function: true
+            optimization: level-0
+            warnings: all-warnings
+          global:
+            output-debug-info: enable
+          linker:
+            $outputTaskExcludes:
+              - .bin
+            output-format: elf
+            ro-base: "0x08000000"
+            rw-base: "0x20000000"
+        scatterFilePath: ""
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 3
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 1
+              isChecked: true
+              mem:
+                size: "0x20000"
+                startAddr: "0x20000000"
+              noInit: false
+              tag: IRAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x10000"
+                startAddr: "0x10000000"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 3
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 1
+              isChecked: true
+              isStartup: true
+              mem:
+                size: "0x100000"
+                startAddr: "0x8000000"
+              tag: IROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: IROM
+        useCustomScatterFile: false
+    uploadConfigMap:
+      JLink:
+        baseAddr: ""
+        bin: ""
+        cpuInfo:
+          cpuName: "null"
+          vendor: "null"
+        otherCmds: ""
+        proType: 1
+        speed: 8000
+      probe-rs:
+        allowEraseAll: false
+        baseAddr: "0x08000000"
+        bin: ""
+        otherOptions: ""
+        protocol: swd
+        speed: 0
+        target: STM32F407IG
+    uploader: probe-rs

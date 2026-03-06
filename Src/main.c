@@ -200,20 +200,20 @@ int main(void)
 		
 		// ============磁力计和陀螺仪数据============
 //		UART2_SendByte(',');
-		UART2_SendFloat_Sign(Can_BMI088_Data.Yaw,4);
-		UART2_SendByte(',');
+		// UART2_SendFloat_Sign(Can_BMI088_Data.Yaw,4);
+		// UART2_SendByte(',');
 		UART2_SendFloat_Sign(BigYaw_BMI088_Data.Yaw,4);
 		UART2_SendByte(',');
 		UART2_SendFloat_Sign(SmallYaw_BMI088_Data.Yaw,4);
-		UART2_SendByte(',');
+		// UART2_SendByte(',');
 		
 		
-		UART2_SendFloat_Sign(gyro_needvalue,4);//用户目标角度
-		UART2_SendByte(',');
-		UART2_SendFloat_Sign(SmallYaw_BMI088_Data.Yaw,4);//实际角度
-		UART2_SendByte(',');
-		UART2_SendFloat_Sign(SmallYaw_GyroscopePID.Need_Value,4);//电机目标角度
-//		UART2_SendByte(',');
+// 		UART2_SendFloat_Sign(gyro_needvalue,4);//用户目标角度
+// 		UART2_SendByte(',');
+// 		UART2_SendFloat_Sign(SmallYaw_BMI088_Data.Yaw,4);//实际角度
+// 		UART2_SendByte(',');
+// 		UART2_SendFloat_Sign(SmallYaw_GyroscopePID.Need_Value,4);//电机目标角度
+// //		UART2_SendByte(',');
 		// ============遥控器数据============
 		{
 //		UART2_SendNumber(local_rc_ctrl->rc.ch[0]+1024,4);//右摇杆左右
