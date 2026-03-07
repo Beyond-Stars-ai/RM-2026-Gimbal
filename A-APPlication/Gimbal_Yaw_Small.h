@@ -10,7 +10,7 @@
 
 static void adjustAngle3(float angle1, float angle2, float *angle3);
 
-void Gimbal_YawSmall_Init(void);
+void Gimbal_YawSmall_Init(float initial_yaw);
 void Gimbal_YawSmall_Control(void);
 
 #endif // __GIMBAL_YAW_SMALL_H

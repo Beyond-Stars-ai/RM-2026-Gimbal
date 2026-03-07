@@ -19,9 +19,9 @@ float gyro_needvalue = 0;
 
 
 
-void Gimbal_YawSmall_Init(void)
+void Gimbal_YawSmall_Init(float initial_yaw)
 {
-	PID_PositionStructureInit (&SmallYaw_GyroscopePID,0);        //外环小yaw角度环
+	PID_PositionStructureInit (&SmallYaw_GyroscopePID, initial_yaw);        //外环小yaw角度环
   PID_PositionSetParameter  (&SmallYaw_GyroscopePID,40,0,0);
   PID_PositionSetOUTRange   (&SmallYaw_GyroscopePID,-20000,20000);
 
@@ -32,8 +32,7 @@ void Gimbal_YawSmall_Init(void)
 	
 	//====新加的
 	// 【零偏差启动】推翻预设位置(0°)，当前位置即目标位置
-	gyro_needvalue = SmallYaw_BMI088_Data.Yaw;
-	PID_PositionSetNeedValue(&SmallYaw_GyroscopePID, SmallYaw_BMI088_Data.Yaw);
+	gyro_needvalue = initial_yaw;
 	//====
 }
 

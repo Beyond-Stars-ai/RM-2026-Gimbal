@@ -15,9 +15,9 @@ extern CAN_HandleTypeDef hcan2;
 
 
 
-void Gimbal_YawBig_Init(void)
+void Gimbal_YawBig_Init(float initial_position)
 {
-	PID_PositionStructureInit (&BigYaw_PositionPID,2432);        //外环小yaw电机位置环
+	PID_PositionStructureInit (&BigYaw_PositionPID, initial_position +104);        //外环小yaw电机位置环 +2432
   PID_PositionSetParameter  (&BigYaw_PositionPID,0.5,0,0);
 	PID_PositionSetEkRange		(&BigYaw_PositionPID,-50,50);		//位置式PID设置误差为0阈值
   PID_PositionSetOUTRange   (&BigYaw_PositionPID,-20000,20000);
@@ -27,11 +27,6 @@ void Gimbal_YawBig_Init(void)
   PID_PositionSetParameter  (&BigYaw_SpeedPID,45,0,0);
 	PID_PositionSetEkRange		(&BigYaw_PositionPID,-2,2);
   PID_PositionSetOUTRange   (&BigYaw_SpeedPID,-15000,15000);
-	
-	//====新加的
-	// 【零偏差启动】推翻预设位置(2432)，当前编码器位置即目标位置
-	PID_PositionSetNeedValue(&BigYaw_PositionPID, Can2_M6020_MotorStatus[0].Angle);
-	//====
 }
 
 void Gimbal_YawBig_Control(void)

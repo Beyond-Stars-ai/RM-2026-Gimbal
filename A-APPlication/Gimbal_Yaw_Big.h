@@ -6,6 +6,6 @@
 #include "Motor.h"
 #include "BMI088.h"
 
-void Gimbal_YawBig_Init(void);
+void Gimbal_YawBig_Init(float initial_position);
 void Gimbal_YawBig_Control(void);
 #endif // __GIMBAL_YAW_SMALL_H
