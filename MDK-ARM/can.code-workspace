@@ -22,6 +22,8 @@
             "path": "../Src"
         }
     ],
-    "settings": {},
+    "settings": {
+        "Codegeex.RepoIndex": true
+    },
     "extensions": {}
 }

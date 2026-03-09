@@ -158,12 +158,13 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
   MX_TIM6_Init();
-  //  MX_IWDG_Init();
+  // MX_IWDG_Init();
   MX_I2C3_Init();
   MX_SPI1_Init();
   MX_TIM10_Init();
   MX_TIM5_Init();
   MX_TIM4_Init();
+  MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
 	HAL_TIM_Base_Start_IT(&htim6);
   Can_Filter_Init();
