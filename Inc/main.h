@@ -37,7 +37,11 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+extern UART_HandleTypeDef huart1;
 
+extern UART_HandleTypeDef huart3;
+
+extern UART_HandleTypeDef huart6;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
