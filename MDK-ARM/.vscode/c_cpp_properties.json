@@ -3,19 +3,19 @@
         {
             "name": "can",
             "includePath": [
-                "r:\\RM-2026-Gimbal\\Inc",
-                "r:\\RM-2026-Gimbal\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
-                "r:\\RM-2026-Gimbal\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
-                "r:\\RM-2026-Gimbal\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
-                "r:\\RM-2026-Gimbal\\Drivers\\CMSIS\\Include",
-                "r:\\RM-2026-Gimbal\\A-APPlication",
-                "r:\\RM-2026-Gimbal\\A-DEvice",
-                "r:\\RM-2026-Gimbal\\A-Driver",
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\Inc",
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\Drivers\\CMSIS\\Include",
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\A-APPlication",
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\A-DEvice",
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\A-Driver",
                 "C:\\Keil_v5\\ARM\\ARMCC\\include",
                 "C:\\Keil_v5\\ARM\\ARMCC\\include\\rw",
-                "r:\\RM-2026-Gimbal\\MDK-ARM",
-                "r:\\RM-2026-Gimbal\\Src",
-                "r:\\RM-2026-Gimbal\\Drivers\\STM32F4xx_HAL_Driver\\Src"
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\MDK-ARM",
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\Src",
+                "d:\\workplace\\zxy\\RM-2026-Gimbal\\Drivers\\STM32F4xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
