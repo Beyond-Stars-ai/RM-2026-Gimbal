@@ -118,33 +118,34 @@ void CToC_MasterSendData(int16_t data1, int16_t data2,
                          CAN_HandleTypeDef *hcan)
 {
     CAN_TxHeaderTypeDef Tx_Message;
-    uint8_t Can_Send_Data[8];
+    uint8_t Can_Send_Data_1[8];
+    uint8_t Can_Send_Data_2[8];
     uint32_t send_mail_box;
 
     Tx_Message.StdId = 0x149;
     Tx_Message.RTR = CAN_RTR_DATA; // 数据帧
     Tx_Message.IDE = CAN_ID_STD;   // 标准格式
     Tx_Message.DLC = 0x08;         // 8字节数据段
-    Can_Send_Data[0] = data1 >> 8;
-    Can_Send_Data[1] = data1;
-    Can_Send_Data[2] = data2 >> 8;
-    Can_Send_Data[3] = data2;
-    Can_Send_Data[4] = data3 >> 8;
-    Can_Send_Data[5] = data3;
-    Can_Send_Data[6] = data4 >> 8;
-    Can_Send_Data[7] = data4;
-    HAL_CAN_AddTxMessage(hcan, &Tx_Message, Can_Send_Data, &send_mail_box);
+    Can_Send_Data_1[0] = data1 >> 8;
+    Can_Send_Data_1[1] = data1;
+    Can_Send_Data_1[2] = data2 >> 8;
+    Can_Send_Data_1[3] = data2;
+    Can_Send_Data_1[4] = data3 >> 8;
+    Can_Send_Data_1[5] = data3;
+    Can_Send_Data_1[6] = data4 >> 8;
+    Can_Send_Data_1[7] = data4;
+    HAL_CAN_AddTxMessage(hcan, &Tx_Message, Can_Send_Data_1, &send_mail_box);
 
     Tx_Message.StdId = 0x189;  // 使用不同的ID
-    Can_Send_Data[0] = data5 >> 8;
-    Can_Send_Data[1] = data5;
-    Can_Send_Data[2] = data6 >> 8;
-    Can_Send_Data[3] = data6;
-    Can_Send_Data[4] = 0;
-    Can_Send_Data[5] = 0;
-    Can_Send_Data[6] = 0;
-    Can_Send_Data[7] = 0;
-    HAL_CAN_AddTxMessage(hcan, &Tx_Message, Can_Send_Data, &send_mail_box);
+    Can_Send_Data_2[0] = data5 >> 8;
+    Can_Send_Data_2[1] = data5;
+    Can_Send_Data_2[2] = data6 >> 8;
+    Can_Send_Data_2[3] = data6;
+    Can_Send_Data_2[4] = 0;
+    Can_Send_Data_2[5] = 0;
+    Can_Send_Data_2[6] = 0;
+    Can_Send_Data_2[7] = 0;
+    HAL_CAN_AddTxMessage(hcan, &Tx_Message, Can_Send_Data_2, &send_mail_box);
 
 }
 

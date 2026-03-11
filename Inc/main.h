@@ -42,6 +42,8 @@ extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart3;
 
 extern UART_HandleTypeDef huart6;
+
+// IWDG_HandleTypeDef hiwdg;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
