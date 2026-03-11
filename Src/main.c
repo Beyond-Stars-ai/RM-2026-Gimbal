@@ -158,7 +158,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
   MX_TIM6_Init();
-  //  MX_IWDG_Init();
+  MX_IWDG_Init();
   MX_I2C3_Init();
   MX_SPI1_Init();
   MX_TIM10_Init();
@@ -173,13 +173,14 @@ int main(void)
 	Buzzer_Init();
 	
 	//====新加的
-	// 【零偏差启动】先执行姿态解算获取当前位置，再初始化PID
 	Gimbal_PoseCalc();
 	HAL_Delay(100);  // 等待100ms确保数据稳定
+  Gimbal_PoseCalc();
+  HAL_Delay(100);
 	//====
 	
-  Gimbal_YawSmall_Init(Can2_M6020_MotorStatus[1].ANgle);           // 传入当前IMU角度
-  Gimbal_YawBig_Init(Can2_M6020_MotorStatus[0].ANgle);      // 传入当前编码器值
+  Gimbal_YawSmall_Init(Can2_M6020_MotorStatus[1].ANgle);          
+  Gimbal_YawBig_Init(Can2_M6020_MotorStatus[0].ANgle);    
 	Gimbal_Trigger_Init();
 	Gimbal_Shoot_Init();
 	Gimbal_Pitch_Init();

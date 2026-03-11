@@ -16,12 +16,17 @@ extern RC_ctrl_t *local_rc_ctrl;
 
 float gyro_needvalue = 0;
 
+//====新加的
+// 开机编码器位置，用于相对限位
+static float smallyaw_x = 0;
+//====
 
-
-
-void Gimbal_YawSmall_Init(float initial_yaw)
+void Gimbal_YawSmall_Init(float x)
 {
-	PID_PositionStructureInit (&SmallYaw_GyroscopePID, initial_yaw);        //外环小yaw角度环
+	// 保存开机位置，用于后续相对限位
+	smallyaw_x = x;
+	
+	PID_PositionStructureInit (&SmallYaw_GyroscopePID,0);        //外环小yaw角度环
   PID_PositionSetParameter  (&SmallYaw_GyroscopePID,40,0,0);
   PID_PositionSetOUTRange   (&SmallYaw_GyroscopePID,-20000,20000);
 
@@ -32,7 +37,7 @@ void Gimbal_YawSmall_Init(float initial_yaw)
 	
 	//====新加的
 	// 【零偏差启动】推翻预设位置(0°)，当前位置即目标位置
-	gyro_needvalue = initial_yaw;
+	gyro_needvalue = SmallYaw_BMI088_Data.Yaw;
 	//====
 }
 
@@ -52,11 +57,20 @@ void Gimbal_YawSmall_Control(void)
 	PID_PositionCalc_IMU(&SmallYaw_GyroscopePID, SmallYaw_BMI088_Data.Yaw);
 	// ============ 速度环计算 =========================
 	PID_PositionSetNeedValue(&SmallYaw_SpeedPID, SmallYaw_GyroscopePID.OUT);//SmallYaw_GyroscopePID.OUT
-	PID_PositionCalc				(&SmallYaw_SpeedPID, Can2_M6020_MotorStatus[1].Speed);
-	// if(Can2_M6020_MotorStatus[1].ANgle>-74 && Can2_M6020_MotorStatus[1].ANgle<8) SmallYaw_SpeedPID.OUT=1111;//两个愚蠢的办法解决超限位问题
-	// if(Can2_M6020_MotorStatus[1].ANgle>-154 && Can2_M6020_MotorStatus[1].ANgle<-74) SmallYaw_SpeedPID.OUT=-1111;
-    if(Can2_M6020_MotorStatus[1].ANgle>-74 && Can2_M6020_MotorStatus[1].ANgle<8) SmallYaw_SpeedPID.OUT=400;//两个愚蠢的办法解决超限位问题
-	if(Can2_M6020_MotorStatus[1].ANgle>-154 && Can2_M6020_MotorStatus[1].ANgle<-74) SmallYaw_SpeedPID.OUT=-400;
+	PID_PositionCalc(&SmallYaw_SpeedPID, Can2_M6020_MotorStatus[1].Speed);
+	
+	//====新加的
+	// 【相对限位】基于开机位置x的限位区域
+	// 右限位区：[x-74, x+8]，强制输出+400（向右）
+	// 左限位区：[x-154, x-74]，强制输出-400（向左）
+	float angle = Can2_M6020_MotorStatus[1].ANgle;
+	if(angle > smallyaw_x - 74 && angle < smallyaw_x + 8) {
+		SmallYaw_SpeedPID.OUT = 400;
+	}
+	else if(angle > smallyaw_x - 154 && angle < smallyaw_x - 74) {
+		SmallYaw_SpeedPID.OUT = -400;
+	}
+	//====
 	// ============ 发送输出 ===========================
 //    Motor_6020_Voltage1			(0, (int16_t)SmallYaw_SpeedPID.OUT, 0, 0, &hcan2);
 }
